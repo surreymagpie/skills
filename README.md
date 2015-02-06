@@ -14,7 +14,7 @@ In your terminal, run:
 
 ``` sh
     git clone https://github.com/surreymagpie/skills.git
-    bundle install
+    cd skills/ && bundle install
     rake db:create db:migrate db:seed
 ````
 
