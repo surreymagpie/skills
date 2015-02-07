@@ -1,0 +1,11 @@
+<% if f.errors.any? %>
+  <div class="error_explanation">
+    <p><%= pluralize(f.errors.count, "error") %> prevented this <%= f.class.name.downcase %> from being saved:</p>
+
+    <ol>
+    <% f.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ol>
+  </div>
+<% end %>

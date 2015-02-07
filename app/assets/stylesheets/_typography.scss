@@ -1,0 +1,33 @@
+p {
+  margin-bottom: 1em;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+h1 {
+  @include header(37);
+}
+
+h2 {
+  @include header(28);
+}
+
+h3 {
+  @include header(21);
+}
+
+h4 {
+  @include header(16);
+  font-weight: bold;
+}
+
+h5 {
+  @include header(12);
+  font-weight: bold;
+}
+
+.centre {
+  text-align: center;
+}
+
