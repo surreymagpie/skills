@@ -1,0 +1,34 @@
+<%= form_for @user, html: { class: "form" } do |f| %>
+
+  <%= render 'layouts/error_messages', f: f.object %>
+
+  <div class="form__group">
+    <%= f.label :first_name, "First Name", class: "form__label" %>
+    <%= f.text_field :first_name, class: "form__input" %>
+  </div>
+
+  <div class="form__group">
+    <%= f.label :last_name, "Last Name", class: "form__label" %>
+    <%= f.text_field :last_name, class: "form__input" %>
+  </div>
+
+  <div class="form__group">
+    <%= f.label :email, "Email Address", class: "form__label" %>
+    <%= f.text_field :email, class: "form__input" %>
+  </div>
+
+  <div class="form__group">
+    <%= f.label :password, "Password", class: "form__label" %>
+    <%= f.password_field :password, class: "form__input" %>
+  </div>
+
+  <div class="form__group">
+    <%= f.label :password_confirmation, "Confirm password", class: "form__label" %>
+    <%= f.password_field :password_confirmation, class: "form__input" %>
+  </div>
+
+  <div class="form__submit">
+    <%= f.submit "Register", :disable_with => 'Registering...', class: "form__button" %>
+  </div>
+
+<% end %>
