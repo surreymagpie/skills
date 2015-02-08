@@ -1,0 +1,13 @@
+.user-profiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.user-profile {
+    border: 1px solid $color-separator;
+    padding: $padding;
+    margin-bottom: $padding;
+    flex: 0 1 20rem;
+    overflow: hidden;
+}
