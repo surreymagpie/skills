@@ -59,4 +59,13 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "associations" do
+    it "can add skills" do
+      user = create(:user)
+      expect(user.skills.length).to be 0
+      user.skills.build(description: "Juggling")
+      expect(user.skills.length).to be 1
+    end
+  end
+
 end
