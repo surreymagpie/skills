@@ -18,4 +18,4 @@ In your terminal, run:
     rake db:create db:migrate db:seed
 ````
 
-To run tests, simply run `guard`
+To run tests, simply run `bundle exec guard`
