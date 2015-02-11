@@ -4,15 +4,20 @@
   <% @users.each do |user| %>
 
   <div class="user-profile">
-    <p><%= link_to user.full_name, user %></p>
-    <p><%= user.email %></p>
-    <% if user.skills.any? %>
-    <ul class="user-skills">
-    <% user.skills.each do |skill| %>
-      <li class="user-skill"><%= skill.description %></li>
-    <% end %>
-    </ul>
-    <% end %>
+    <div class="user-image">
+      <%= image_tag 'user.svg' %>
+    </div>
+    <div class="user-meta">
+      <p><%= link_to user.full_name, user %></p>
+      <p><%= user.email %></p>
+      <% if user.skills.any? %>
+      <ul class="user-skills">
+      <% user.skills.each do |skill| %>
+        <li class="user-skill"><%= skill.description %></li>
+      <% end %>
+      </ul>
+      <% end %>
+    </div>
   </div>
 
   <% end %>

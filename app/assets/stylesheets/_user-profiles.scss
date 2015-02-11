@@ -5,9 +5,18 @@
 }
 
 .user-profile {
+    background-color: $color-card;
     border: 1px solid $color-separator;
-    padding: $padding;
-    margin-bottom: $padding;
-    flex: 0 1 20rem;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    flex: auto;
+    margin: 0 .5vw $padding;
     overflow: hidden;
+    padding: $padding;
+}
+
+.user-image {
+    flex-shrink: 0;
+    margin-right: 1rem;
 }
