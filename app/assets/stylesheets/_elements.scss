@@ -1,0 +1,42 @@
+header {
+  @extend %clearfix;
+  background: #E30614
+   linear-gradient(to bottom, lighten(#f53d46, 10%), #f53d46);
+  color: #FFF;
+  padding: 0 $padding;
+  box-shadow: 0 $padding/8 $padding/4 rgba(0,0,0,.5);
+  h1 {
+    margin-top: 0;
+    padding-top: $padding;
+  }
+}
+
+.container {
+  @extend %clearfix;
+  padding: 0 $padding;
+}
+
+// Flash messages
+.flash {
+  border: 2px solid;
+  padding: 1rem;
+  border-radius: 5px;
+  margin: 1.5rem 0;
+
+  &--success {
+    border-color: #008000;
+    background-color: #a8e8a8;
+  }
+
+  &--error {
+    border-color: #800000;
+    background-color: #ee4f4f;
+    color: #fff;
+  }
+
+  &--notice {
+    border-color: #000;
+    background-color: #9a9a9a;
+    color: #fff;
+  }
+}

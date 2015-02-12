@@ -18,6 +18,7 @@ class UsersController < ApplicationController
       flash[:success] = "Successfully signed up"
       redirect_to profile_user_path(@user)
     else
+      flash[:error] = "Account creation failed"
       render 'new'
     end
   end

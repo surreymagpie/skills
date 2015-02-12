@@ -6,3 +6,14 @@
   margin-bottom: $line-height * 1rem;
   margin-top: $line-height * 1rem;
 }
+
+%clearfix {
+  &:before,
+  &:after {
+    display: table;
+    content: '';
+  }
+  &:after {
+    clear: both;
+  }
+}
