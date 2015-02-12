@@ -30,11 +30,8 @@ RSpec.describe User, type: :model do
     end
 
     it "requires a unique email" do
-      expect(user).to be_valid
-      user.email = ""
-      expect(user).to be_invalid
       user2 = build(:user,
-        first_name: "Rob", last_name: "Curtis", email: "john.smith@example.com",
+        first_name: "Rob", last_name: "Curtis", email: user.email,
         password: "password", password_confirmation: "password")
       expect(user2).to be_invalid
     end

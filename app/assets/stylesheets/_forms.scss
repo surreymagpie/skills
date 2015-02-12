@@ -3,6 +3,19 @@
   margin: auto;
 }
 
+fieldset {
+  margin: 0 0 $padding;
+  padding: 0;
+  border-top: 1px solid grey;
+  border-left: 0;
+  border-right: 0;
+}
+
+legend {
+    color: grey;
+    padding: 0 .25rem 0 0;
+}
+
 .form__group {
   display: flex;
   flex-wrap: wrap;
@@ -15,6 +28,9 @@
   margin-right: 1em;
   &.error {
     color: $color-danger;
+  }
+  &--right {
+    text-align: right;
   }
 }
 

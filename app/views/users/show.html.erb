@@ -1,4 +1,17 @@
 <h1><%= @user.full_name %></h1>
 
-<%= link_to "Edit", edit_user_path %>
-<%= link_to "Delete Employee", user_path, method: :delete, data_confirm: "Are you sure?" %>
+<p><small><%= @user.email %></small></p>
+
+<p>Dept: <%= @user.dept %></p>
+<p>Telephone: #<%= @user.extn %></p>
+
+<ul>
+  <% @user.skills.each do |skill| %>
+    <li><%= skill.description %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Edit your account", edit_user_path %>
+<%= link_to "Edit your profile", profile_user_path %>
+
+<%= link_to "Delete your account", user_path, method: :delete, data_confirm: "Are you sure?" %>

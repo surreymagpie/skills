@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   has_many :skills
+  accepts_nested_attributes_for :skills, reject_if: proc { |attributes| attributes['description'].blank? }, allow_destroy: true
 
   validates :first_name, :last_name, :email, presence: true
   validates :email, uniqueness: true

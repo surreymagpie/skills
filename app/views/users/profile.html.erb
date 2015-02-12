@@ -1,0 +1,33 @@
+<h1>Profile</h1>
+
+<%= form_for @user, url: profile_user_path, html: { class: "form" } do |f| -%>
+  <%= render 'layouts/error_messages', f: f.object %>
+
+  <div class="form__group">
+    <%= f.label :dept, "Department", class: "form__label" %>
+    <%= f.text_field :dept, class: "form__input" %>
+  </div>
+
+  <div class="form__group">
+    <%= f.label :extn, "Extension", class: "form__label" %>
+    <%= f.number_field :extn, class: "form__input" %>
+  </div>
+
+  <fieldset>
+    <legend>
+      Skills
+    </legend>
+    <p>Describe three skills or things about you that you don't usually get to use at work</p>
+      <%= f.fields_for :skills do |s| %>
+    <div class="form__group">
+        <%= s.label :description, "#{s.index + 1}", class: "form__label form__label--right" %>
+        <%= s.text_field :description, class: "form__input" %>
+    </div>
+      <% end -%>
+  </fieldset>
+
+  <div class="form__submit">
+    <%= f.submit "Save", class: "form__button" %>
+  </div>
+
+<% end -%>
