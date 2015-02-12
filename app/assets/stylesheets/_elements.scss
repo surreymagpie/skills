@@ -11,6 +11,13 @@ header {
   }
 }
 
+footer {
+  background: #666;
+  color: #fff;
+  margin-top: auto;
+  padding: $padding;
+}
+
 .container {
   @extend %clearfix;
   padding: 0 $padding;
@@ -39,4 +46,25 @@ header {
     background-color: #9a9a9a;
     color: #fff;
   }
+}
+.user-skills {
+  padding-left: $padding;
+  list-style-type: circle;
+}
+
+.user-skill {
+    line-height: 3;
+}
+
+dt {
+    clear: left;
+    float: left;
+    font-weight: bold;
+    margin-right: 1.5rem;
+    width: 4em;
+}
+
+.actions {
+    clear: left;
+    margin: $padding*2 0;
 }

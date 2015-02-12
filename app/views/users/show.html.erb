@@ -1,17 +1,31 @@
-<h1><%= @user.full_name %></h1>
+<% content_for :title, @user.full_name %>
+<h2>
+  <%= @user.full_name %>
+  <small><%= @user.email %></small>
+</h2>
 
-<p><small><%= @user.email %></small></p>
+<dl>
+  <dt>Dept: </dt>
+  <dd><%= @user.dept %></dd>
+  <dt>Extension: </dt>
+  <dd>#<%= @user.extn %></dd>
+</dl>
 
-<p>Dept: <%= @user.dept %></p>
-<p>Telephone: #<%= @user.extn %></p>
+<% if @user.skills.any? %>
 
-<ul>
+<ul class="user-skills">
   <% @user.skills.each do |skill| %>
-    <li><%= skill.description %></li>
+    <li class="user-skill"><%= skill.description %></li>
   <% end %>
 </ul>
+
+<% end %>
+
+<div class="actions">
 
 <%= link_to "Edit your account", edit_user_path %>
 <%= link_to "Edit your profile", profile_user_path %>
 
 <%= link_to "Delete your account", user_path, method: :delete, data_confirm: "Are you sure?" %>
+
+</div>
