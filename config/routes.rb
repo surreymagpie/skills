@@ -2,13 +2,19 @@
 Rails.application.routes.draw do
 
   root 'users#index'
-  get 'register' => 'users#new'
+
+  get     'login'       => 'sessions#new'
+  post    'login'       => 'sessions#create'
+  delete  'logout'      => 'sessions#destroy'
+  get     'register'    => 'users#new'
+
   resources :users do
     member do
       get 'profile'
       patch 'profile' => 'users#save_profile'
     end
   end
+
   resources :skills
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -36,6 +36,7 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'libnotify'
+  gem 'launchy'
 
   # Use AP for nicer console experience and QA to suppress rails server logging asset requests
   gem 'awesome_print'

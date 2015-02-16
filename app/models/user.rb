@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :password,  confirmation: true, length: { minimum: 6 }, if: :password_required?
 
+  before_save :email_downcase
+
   def full_name
     first_name + " " + last_name
   end
@@ -15,5 +17,9 @@ class User < ActiveRecord::Base
 
   def password_required?
     new_record? || !password.nil?
+  end
+
+  def email_downcase
+    self.email.downcase
   end
 end
