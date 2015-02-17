@@ -6,7 +6,7 @@
     <ul class="menu-items">
     <% if logged_in? %>
       <li class="menu-item"><%= link_to "My account", current_user, class: 'menu-link' %></li>
-      <li class="menu-item"><%= link_to "Log out", login_path %></li>
+      <li class="menu-item"><%= link_to "Log out", logout_path, method: :delete %></li>
     <% else %>
       <li class="menu-item"><%= link_to "Register", register_path, class: 'menu-link' %></li>
       <li class="menu-item"><%= link_to "Log in", login_path %></li>

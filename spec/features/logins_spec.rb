@@ -16,12 +16,7 @@ RSpec.feature "Login", type: :feature do
 
   context "with vaild credentials" do
 
-    before(:each) do
-      visit login_path
-      fill_in 'Email Address', with: @user.email
-      fill_in 'Password', with: @user.password
-      click_button 'Log in'
-    end
+    before(:each) { login @user }
 
     it "allows the user to see their profile" do
       expect(page).to have_title @user.full_name
@@ -38,12 +33,7 @@ RSpec.feature "Login", type: :feature do
 
   context "with invalid credentials" do
 
-    before(:each) do
-      visit login_path
-      fill_in 'Email Address', with: @user.email
-      fill_in 'Password', with: "WrongPassword"
-      click_button 'Log in'
-    end
+    before(:each) { login(@user, password: "WrongPassword")}
 
     it "prevents the user accessing information" do
       expect(page).to have_title 'Log in'
@@ -55,4 +45,31 @@ RSpec.feature "Login", type: :feature do
     end
 
   end
+
+  context "Logging out" do
+    before do
+      login @user
+      visit root_path
+      click_link 'Log out'
+    end
+
+    it "shows the log in link" do
+      expect(page).to have_link 'Log in'
+    end
+
+    it "shows a logged out message" do
+      within '.flash' do
+        expect(page).to have_content "Logged out"
+      end
+    end
+  end
+end
+
+def login(user, options={})
+  email     = options[:email] || user.email
+  password  = options[:password] || user.password
+  visit login_path
+  fill_in 'Email Address', with: email
+  fill_in 'Password', with: password
+  click_button 'Log in'
 end
