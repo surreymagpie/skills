@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, except: [:new, :create, :index]
+  before_action :authorise_user, except: [:new, :create]
 
   def index
     @users = User.includes(:skills).all.order('last_name ASC')
@@ -16,7 +17,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Successfully signed up"
-      redirect_to profile_user_path(@user)
+      session[:user_id] = @user.id
+      redirect_to profile_user_url(@user)
     else
       flash[:error] = "Account creation failed"
       render 'new'
@@ -52,7 +54,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     flash[:success] = "User has been deleted."
-    redirect_to users_path
+    redirect_to root_path
   end
 
   private
@@ -64,5 +66,17 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find params[:id]
+  end
+
+  def authorise_user
+    if logged_in?
+      unless @current_user == @user || @current_user.admin?
+        flash[:notice] = "You are not authorised to visit that page"
+        redirect_to @current_user
+      end
+    else
+      flash[:error] = "You must log in to visit that page"
+      redirect_to login_path
+    end
   end
 end

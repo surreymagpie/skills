@@ -5,6 +5,13 @@ RSpec.feature "Login", type: :feature do
 
   before(:all) { @user = create(:user) }
 
+  context "before logging in" do
+    it "prevents seeing the users index" do
+      visit '/'
+      within('.form') { expect(page).to have_content 'Log In' }
+    end
+  end
+
   context "navigating to the login page" do
     it "displays the login form" do
       visit '/'
@@ -14,9 +21,9 @@ RSpec.feature "Login", type: :feature do
     end
   end
 
-  context "with vaild credentials" do
+  context "with valid credentials" do
 
-    before(:each) { login @user }
+    before(:each) { log_in @user }
 
     it "allows the user to see their profile" do
       expect(page).to have_title @user.full_name
@@ -33,7 +40,7 @@ RSpec.feature "Login", type: :feature do
 
   context "with invalid credentials" do
 
-    before(:each) { login(@user, password: "WrongPassword")}
+    before(:each) { log_in(@user, password: "WrongPassword")}
 
     it "prevents the user accessing information" do
       expect(page).to have_title 'Log in'
@@ -48,7 +55,7 @@ RSpec.feature "Login", type: :feature do
 
   context "Logging out" do
     before do
-      login @user
+      log_in @user
       visit root_path
       click_link 'Log out'
     end
@@ -63,13 +70,11 @@ RSpec.feature "Login", type: :feature do
       end
     end
   end
-end
 
-def login(user, options={})
-  email     = options[:email] || user.email
-  password  = options[:password] || user.password
-  visit login_path
-  fill_in 'Email Address', with: email
-  fill_in 'Password', with: password
-  click_button 'Log in'
+  def log_in(user, options={})
+    visit login_path
+    fill_in 'Email Address', with: options[:email] || user.email
+    fill_in 'Password', with: options[:password] || user.password
+    click_button 'Log in'
+  end
 end
